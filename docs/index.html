@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AdContext ? Context-Aware Ad Placement</title>
+
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#090a0d;
+  --panel:#12151a;
+  --panel2:#191d24;
+  --text:#f4f5f7;
+  --muted:#9aa2ad;
+  --line:#2b3038;
+  --accent:#e84142;
+  --green:#66d7a5;
+  --amber:#f1c86a;
+  --blue:#7eb8ff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 8% 0,rgba(232,65,66,.15),transparent 32rem),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,"Segoe UI",sans-serif;
+}
+
+.shell{
+  width:min(1500px,calc(100% - 36px));
+  margin:auto;
+  padding:28px 0 50px;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:flex-start;
+}
+
+.eyebrow{
+  color:var(--accent);
+  letter-spacing:.17em;
+  font-size:11px;
+  font-weight:900;
+}
+
+h1{
+  margin:3px 0 5px;
+  font-size:52px;
+  letter-spacing:-.055em;
+}
+
+.subtitle{
+  color:var(--muted);
+  max-width:800px;
+}
+
+.badge{
+  border:1px solid rgba(102,215,165,.25);
+  background:rgba(102,215,165,.08);
+  color:var(--green);
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.panel{
+  background:rgba(18,21,26,.96);
+  border:1px solid var(--line);
+  border-radius:16px;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:22px 0;
+}
+
+.metric{
+  padding:18px;
+}
+
+.metric .big{
+  font-size:34px;
+  font-weight:900;
+  margin:3px 0;
+}
+
+.metric small{
+  color:var(--muted);
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  padding:8px;
+  margin-bottom:14px;
+}
+
+.tabs button{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  padding:11px 14px;
+  border-radius:9px;
+  font:inherit;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tabs button.active{
+  background:var(--panel2);
+  color:var(--text);
+}
+
+.view{
+  display:none;
+}
+
+.view.active{
+  display:block;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(340px,.7fr);
+  gap:16px;
+}
+
+.player{
+  position:relative;
+  background:#000;
+  aspect-ratio:16/9;
+  overflow:hidden;
+}
+
+video{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.ad{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  background:
+    radial-gradient(circle at 70% 30%,rgba(126,184,255,.32),transparent 30rem),
+    linear-gradient(145deg,#10182d,#25121d);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.ad h2{
+  font-size:52px;
+  margin:6px 0;
+}
+
+.ad p{
+  color:#c9d3df;
+}
+
+.ad .count{
+  margin-top:18px;
+  color:var(--amber);
+  font-weight:800;
+}
+
+.side{
+  padding:18px;
+}
+
+.side h2{
+  margin:6px 0 14px;
+}
+
+.row{
+  border-top:1px solid var(--line);
+  padding:11px 0;
+}
+
+.row small{
+  display:block;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.chips{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.chip{
+  border:1px solid var(--line);
+  background:#1d2229;
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:12px;
+}
+
+.controls{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  padding:12px;
+  margin-bottom:12px;
+}
+
+select,input,button.action{
+  height:42px;
+  border-radius:9px;
+  border:1px solid var(--line);
+  background:var(--panel2);
+  color:var(--text);
+  padding:0 12px;
+  font:inherit;
+}
+
+button.action{
+  background:var(--accent);
+  border-color:var(--accent);
+  cursor:pointer;
+  font-weight:800;
+}
+
+.notice{
+  padding:14px 16px;
+  color:var(--muted);
+  margin-bottom:14px;
+  line-height:1.5;
+}
+
+.timeline{
+  margin-top:10px;
+  padding:14px;
+}
+
+.track{
+  position:relative;
+  height:8px;
+  border-radius:99px;
+  background:#2a2f37;
+}
+
+.marker{
+  position:absolute;
+  top:-4px;
+  width:3px;
+  height:16px;
+  background:var(--accent);
+  transform:translateX(-50%);
+}
+
+.marker.nofill{
+  background:var(--amber);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.card{
+  padding:14px;
+}
+
+.card b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.card small{
+  color:var(--muted);
+}
+
+.table{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+th,td{
+  text-align:left;
+  padding:10px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+
+th{
+  color:var(--muted);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+.good{color:var(--green)}
+.warn{color:var(--amber)}
+.muted{color:var(--muted)}
+
+footer{
+  color:var(--muted);
+  text-align:center;
+  font-size:11px;
+  padding-top:24px;
+}
+
+@media(max-width:900px){
+  .metrics,.cards,.grid{
+    grid-template-columns:1fr;
+  }
+  header{
+    display:block;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="shell">
+
+<header>
+  <div>
+    <div class="eyebrow">HOICHOI AI BUILDERS / P1</div>
+    <h1>AdContext</h1>
+    <div class="subtitle">
+      Context-aware video segmentation, interruption-safe ad placement,
+      constrained scheduling and fail-closed brand matching.
+    </div>
+  </div>
+  <div class="badge">LIVE PUBLIC DEMO</div>
+</header>
+
+<section class="metrics">
+  <div class="metric panel">
+    <small>Production speech interruption</small>
+    <div id="prodMetric" class="big good">?</div>
+    <small>development-set VAD safety proxy</small>
+  </div>
+
+  <div class="metric panel">
+    <small>Visual-only baseline</small>
+    <div id="visualMetric" class="big warn">?</div>
+    <small>same inventory where feasible</small>
+  </div>
+
+  <div class="metric panel">
+    <small>Periodic baseline</small>
+    <div id="periodicMetric" class="big warn">?</div>
+    <small>fixed five-minute placement</small>
+  </div>
+</section>
+
+<div class="tabs panel">
+  <button data-tab="fixture" class="active">Live synthetic demo</button>
+  <button data-tab="evidence">Model evidence</button>
+  <button data-tab="local">Load local source video</button>
+</div>
+
+<section id="fixture" class="view active">
+  <div class="notice panel">
+    This synthetic fixture demonstrates player mechanics only.
+    Its timestamp is not a model evaluation result. At the scheduled point,
+    playback pauses, a synthetic ad is shown, and content resumes automatically.
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="player panel">
+        <video id="fixtureVideo" controls preload="metadata"
+          src="media/synthetic-fixture.mp4"></video>
+
+        <div id="fixtureAd" class="ad hidden">
+          <div>
+            <div class="eyebrow">SYNTHETIC CONTEXT-MATCHED AD</div>
+            <h2 id="fixtureBrand">?</h2>
+            <p>Generated advertiser used only for the hackathon demo.</p>
+            <div id="fixtureCountdown" class="count"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline panel">
+        <div id="fixtureTrack" class="track"></div>
+      </div>
+    </div>
+
+    <aside class="side panel">
+      <div class="eyebrow">PLAYER TRACE</div>
+      <h2 id="fixtureTitle">Waiting</h2>
+
+      <div class="row">
+        <small>Scheduled timestamp</small>
+        <b id="fixtureTime">?</b>
+      </div>
+
+      <div class="row">
+        <small>Context cues</small>
+        <div id="fixtureContext" class="chips"></div>
+      </div>
+
+      <div class="row">
+        <small>Delivery</small>
+        <b>pause / synthetic ad / resume</b>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="evidence" class="view">
+  <div class="notice panel">
+    These are frozen model decisions from the five development titles.
+    Source videos are intentionally not redistributed here.
+    Scene segmentation is explanatory metadata and does not alter the frozen EABS optimizer.
+  </div>
+
+  <div class="controls panel">
+    <select id="evidenceSelect"></select>
+  </div>
+
+  <div id="evidenceCards" class="cards"></div>
+
+  <div class="table panel" style="margin-top:12px">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>EABS</th>
+          <th>Scene relation</th>
+          <th>Context</th>
+          <th>Brand</th>
+          <th>Safety</th>
+        </tr>
+      </thead>
+      <tbody id="evidenceBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="local" class="view">
+  <div class="notice panel">
+    Choose one of the original hackathon MP4 files from your computer.
+    The file stays in your browser; it is never uploaded.
+    Ad decisions are read from the frozen model manifest.
+  </div>
+
+  <div class="controls panel">
+    <input id="localFile" type="file" accept="video/mp4">
+    <button id="jumpLocal" class="action">Jump to next break</button>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="player panel">
+        <video id="localVideo" controls preload="metadata"></video>
+
+        <div id="localAd" class="ad hidden">
+          <div>
+            <div class="eyebrow">CONTEXT-MATCHED SYNTHETIC AD</div>
+            <h2 id="localBrand">?</h2>
+            <p id="localAdReason"></p>
+            <div id="localCountdown" class="count"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline panel">
+        <div id="localTrack" class="track"></div>
+      </div>
+    </div>
+
+    <aside class="side panel">
+      <div class="eyebrow">MODEL DECISION TRACE</div>
+      <h2 id="localTitle">Choose a source MP4</h2>
+
+      <div class="row">
+        <small>EABS</small>
+        <b id="localEabs">?</b>
+      </div>
+
+      <div class="row">
+        <small>Semantic scene</small>
+        <b id="localScene">?</b>
+      </div>
+
+      <div class="row">
+        <small>Context cues</small>
+        <div id="localContext" class="chips"></div>
+      </div>
+
+      <div class="row">
+        <small>Hard safety contexts</small>
+        <div id="localSafety" class="chips"></div>
+      </div>
+
+      <div class="row">
+        <small>Selected brand</small>
+        <b id="localSelectedBrand">?</b>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<footer>
+  Synthetic advertisers only. Public site does not redistribute supplied source videos.
+  Baseline statistics are development-set diagnostics, not human perceptual-quality ground truth.
+</footer>
+
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = s => {
+  if (!Number.isFinite(s)) return '?';
+  const m = Math.floor(s / 60);
+  const r = Math.floor(s % 60);
+  return String(m).padStart(2,'0') + ':' + String(r).padStart(2,'0');
+};
+const pct = x => x == null ? '?' : (100*x).toFixed(1) + '%';
+
+let modelManifest = null;
+let fixtureManifest = null;
+let localModel = null;
+let localPlayed = new Set();
+let localActive = false;
+
+function chips(el, values){
+  el.replaceChildren();
+  if (!values?.length){
+    el.textContent = 'none';
+    el.className = 'chips muted';
+    return;
+  }
+  el.className = 'chips';
+  values.forEach(v => {
+    const span = document.createElement('span');
+    span.className = 'chip';
+    span.textContent = v;
+    el.appendChild(span);
+  });
+}
+
+document.querySelectorAll('.tabs button').forEach(button => {
+  button.onclick = () => {
+    document.querySelectorAll('.tabs button').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
+    button.classList.add('active');
+    $(button.dataset.tab).classList.add('active');
+  };
+});
+
+Promise.all([
+  fetch('data/model-manifest.json').then(r => r.json()),
+  fetch('data/fixture-manifest.json').then(r => r.json()),
+  fetch('data/baseline-summary.json').then(r => r.json())
+]).then(([model, fixture, baseline]) => {
+  modelManifest = model;
+  fixtureManifest = fixture;
+
+  const agg = baseline.aggregate;
+  $('prodMetric').textContent =
+    pct(agg.production.speech_interruption_rate);
+  $('visualMetric').textContent =
+    pct(agg.visual_only.speech_interruption_rate);
+  $('periodicMetric').textContent =
+    pct(agg.periodic.speech_interruption_rate);
+
+  initFixture();
+  initEvidence();
+}).catch(err => {
+  console.error(err);
+  alert('Public demo data failed to load. Open the browser console for details.');
+});
+
+function initFixture(){
+  const b = fixtureManifest.breaks[0];
+  $('fixtureTitle').textContent = b.break_id;
+  $('fixtureTime').textContent = fmt(b.timestamp_seconds);
+  $('fixtureBrand').textContent =
+    b.selected_brand?.name || b.selected_brand?.brand_id || 'Synthetic Ad';
+  chips($('fixtureContext'), b.context?.context_cues || []);
+
+  const marker = document.createElement('i');
+  marker.className = 'marker';
+  marker.style.left =
+    (100 * b.timestamp_seconds / fixtureManifest.duration_seconds) + '%';
+  $('fixtureTrack').appendChild(marker);
+
+  let fired = false;
+
+  $('fixtureVideo').addEventListener('timeupdate', () => {
+    if (
+      !fired &&
+      $('fixtureVideo').currentTime >= b.timestamp_seconds
+    ){
+      fired = true;
+      runFixtureAd();
+    }
+  });
+
+  $('fixtureVideo').addEventListener('seeked', () => {
+    if ($('fixtureVideo').currentTime < b.timestamp_seconds - 1){
+      fired = false;
+    }
+  });
+}
+
+function runFixtureAd(){
+  const video = $('fixtureVideo');
+  video.pause();
+  $('fixtureAd').classList.remove('hidden');
+
+  let n = 5;
+  $('fixtureCountdown').textContent = `Content resumes in ${n}s`;
+
+  const timer = setInterval(() => {
+    n--;
+    if (n <= 0){
+      clearInterval(timer);
+      $('fixtureAd').classList.add('hidden');
+      video.play().catch(()=>{});
+    } else {
+      $('fixtureCountdown').textContent = `Content resumes in ${n}s`;
+    }
+  },1000);
+}
+
+function initEvidence(){
+  const select = $('evidenceSelect');
+
+  modelManifest.videos.forEach(video => {
+    const option = document.createElement('option');
+    option.value = video.video;
+    option.textContent =
+      `${video.video} / ${video.semantic_scene_count} semantic scenes / ${video.break_count} breaks`;
+    select.appendChild(option);
+  });
+
+  select.onchange = renderEvidence;
+
+  if (modelManifest.videos.length){
+    renderEvidence();
+  }
+}
+
+function renderEvidence(){
+  const video = modelManifest.videos.find(
+    x => x.video === $('evidenceSelect').value
+  ) || modelManifest.videos[0];
+
+  const cards = $('evidenceCards');
+  cards.replaceChildren();
+
+  [
+    ['Semantic scenes', video.semantic_scene_count],
+    ['Scheduled breaks', video.break_count],
+    ['Delivered ads', video.delivered_ad_count]
+  ].forEach(([label,value]) => {
+    const div = document.createElement('div');
+    div.className = 'card panel';
+    div.innerHTML = `<small>${label}</small><b>${value}</b>`;
+    cards.appendChild(div);
+  });
+
+  const body = $('evidenceBody');
+  body.replaceChildren();
+
+  video.breaks.forEach(b => {
+    const tr = document.createElement('tr');
+
+    const scene = b.semantic_scene;
+    const sceneText =
+      scene?.relation === 'exact_scene_boundary'
+        ? 'exact scene boundary'
+        : scene
+          ? `within ${scene.scene_id} / ${scene.distance_to_nearest_scene_boundary_seconds?.toFixed(1)}s from nearest scene boundary`
+          : '?';
+
+    const brand =
+      b.delivery_status === 'no_fill_brand_safety'
+        ? 'NO-FILL'
+        : (b.selected_brand?.name || b.selected_brand?.brand_id || '?');
+
+    const safety =
+      b.context?.hard_safety_contexts?.length
+        ? b.context.hard_safety_contexts.join(', ')
+        : 'clear';
+
+    const values = [
+      fmt(b.timestamp_seconds),
+      Number(b.eabs).toFixed(1),
+      sceneText,
+      (b.context?.context_cues || []).join(', '),
+      brand,
+      safety
+    ];
+
+    values.forEach((value,index) => {
+      const td = document.createElement('td');
+      td.textContent = value;
+      if (index === 5 && value === 'clear') td.className = 'good';
+      tr.appendChild(td);
+    });
+
+    body.appendChild(tr);
+  });
+}
+
+$('localFile').addEventListener('change', event => {
+  const file = event.target.files?.[0];
+  if (!file || !modelManifest) return;
+
+  const match = modelManifest.videos.find(
+    v => v.video.toLowerCase() === file.name.toLowerCase()
+  );
+
+  if (!match){
+    alert(
+      `No frozen model decisions found for "${file.name}". ` +
+      'Choose one of the supplied development-title MP4 files.'
+    );
+    return;
+  }
+
+  localModel = match;
+  localPlayed = new Set();
+  localActive = false;
+
+  const url = URL.createObjectURL(file);
+  $('localVideo').src = url;
+  $('localVideo').load();
+
+  $('localTitle').textContent =
+    `${match.video} / ${match.break_count} scheduled breaks`;
+
+  renderLocalTimeline();
+  updateLocalTrace();
+});
+
+function nextLocalBreak(){
+  if (!localModel) return null;
+  const t = $('localVideo').currentTime || 0;
+
+  return localModel.breaks.find(
+    b =>
+      !localPlayed.has(b.break_id) &&
+      b.timestamp_seconds >= t - .25
+  ) || null;
+}
+
+function updateLocalTrace(){
+  const b = nextLocalBreak();
+  if (!b) return;
+
+  $('localEabs').textContent =
+    Number(b.eabs).toFixed(1);
+
+  const scene = b.semantic_scene;
+  $('localScene').textContent =
+    scene?.relation === 'exact_scene_boundary'
+      ? 'Exact semantic-scene transition'
+      : scene
+        ? `${scene.scene_id} / ${scene.distance_to_nearest_scene_boundary_seconds.toFixed(1)}s from nearest transition`
+        : '?';
+
+  chips(
+    $('localContext'),
+    b.context?.context_cues || []
+  );
+
+  chips(
+    $('localSafety'),
+    b.context?.hard_safety_contexts || []
+  );
+
+  $('localSelectedBrand').textContent =
+    b.delivery_status === 'no_fill_brand_safety'
+      ? 'NO-FILL ? all advertisers hard-blocked'
+      : (b.selected_brand?.name || b.selected_brand?.brand_id || '?');
+}
+
+function renderLocalTimeline(){
+  const track = $('localTrack');
+  track.replaceChildren();
+
+  if (!localModel) return;
+
+  localModel.breaks.forEach(b => {
+    const marker = document.createElement('i');
+    marker.className =
+      'marker' +
+      (b.delivery_status === 'no_fill_brand_safety' ? ' nofill' : '');
+    marker.style.left =
+      (100 * b.timestamp_seconds / localModel.duration_seconds) + '%';
+    marker.title =
+      `${fmt(b.timestamp_seconds)} ? ${b.delivery_status}`;
+    track.appendChild(marker);
+  });
+}
+
+function runLocalAd(b){
+  if (localActive) return;
+
+  if (b.delivery_status === 'no_fill_brand_safety'){
+    localPlayed.add(b.break_id);
+    updateLocalTrace();
+    return;
+  }
+
+  if (!b.selected_brand){
+    console.error('Filled break has no brand',b);
+    return;
+  }
+
+  localActive = true;
+  localPlayed.add(b.break_id);
+
+  const video = $('localVideo');
+  video.pause();
+
+  $('localBrand').textContent =
+    b.selected_brand.name || b.selected_brand.brand_id;
+
+  $('localAdReason').textContent =
+    `Context: ${(b.context?.context_cues || []).join(', ') || 'multimodal match'}`;
+
+  $('localAd').classList.remove('hidden');
+
+  let n = 5;
+  $('localCountdown').textContent =
+    `Content resumes in ${n}s`;
+
+  const timer = setInterval(() => {
+    n--;
+
+    if (n <= 0){
+      clearInterval(timer);
+      $('localAd').classList.add('hidden');
+      localActive = false;
+      updateLocalTrace();
+      video.play().catch(()=>{});
+    } else {
+      $('localCountdown').textContent =
+        `Content resumes in ${n}s`;
+    }
+  },1000);
+}
+
+$('localVideo').addEventListener('timeupdate', () => {
+  if (!localModel || localActive) return;
+
+  const due = localModel.breaks.find(
+    b =>
+      !localPlayed.has(b.break_id) &&
+      $('localVideo').currentTime >= b.timestamp_seconds
+  );
+
+  if (due){
+    runLocalAd(due);
+  }
+
+  updateLocalTrace();
+});
+
+$('jumpLocal').onclick = () => {
+  const b = nextLocalBreak();
+  if (!b) return;
+
+  $('localVideo').currentTime =
+    Math.max(0,b.timestamp_seconds - 3);
+
+  $('localVideo').play().catch(()=>{});
+};
+</script>
+
+</body>
+</html>

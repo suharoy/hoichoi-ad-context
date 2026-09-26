@@ -1,0 +1,38 @@
+{
+  "evaluation": "development_baseline_comparison",
+  "scope": "speech-interruption proxy; not human perceptual quality",
+  "baselines": {
+    "periodic": "fixed five-minute placement with pacing constraints; no content understanding",
+    "visual_only": "strongest CLIP contextual shot transitions, matched to production inventory count where feasible; no speech/text",
+    "production": "hard speech safety + multimodal EABS + MILP pacing"
+  },
+  "aggregate": {
+    "periodic": {
+      "break_count": 17,
+      "speech_safe_count": 2,
+      "speech_unsafe_count": 15,
+      "speech_safe_rate": 0.11764705882352941,
+      "speech_interruption_rate": 0.8823529411764706,
+      "speech_crossing_count": 13,
+      "inside_detected_speech_count": 15
+    },
+    "visual_only": {
+      "break_count": 14,
+      "speech_safe_count": 1,
+      "speech_unsafe_count": 13,
+      "speech_safe_rate": 0.07142857142857142,
+      "speech_interruption_rate": 0.9285714285714286,
+      "speech_crossing_count": 12,
+      "inside_detected_speech_count": 13
+    },
+    "production": {
+      "break_count": 14,
+      "speech_safe_count": 14,
+      "speech_unsafe_count": 0,
+      "speech_safe_rate": 1.0,
+      "speech_interruption_rate": 0.0,
+      "speech_crossing_count": 0,
+      "inside_detected_speech_count": 0
+    }
+  }
+}

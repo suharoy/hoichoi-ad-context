@@ -1,0 +1,2888 @@
+{
+  "schema_version": "1.1",
+  "pipeline": "multimodal evidence -> EABS -> MILP pacing -> context retrieval -> hard brand safety -> brand ranking -> fail-closed delivery -> VMAP",
+  "catalogue_name": "synthetic-demo-v1",
+  "catalogue_status": "hackathon_demo_synthetic_not_organizer_spec",
+  "context_method": "multimodal_rank_fusion",
+  "matching_method": "hard negative-context filter, then equal-rank fusion of multilingual-E5 text compatibility and CLIP visual-text compatibility",
+  "videos": [
+    {
+      "video": "bhojon_bilashi.mp4",
+      "duration_seconds": 1227.36,
+      "vmap_file": "vmap/bhojon_bilashi.vmap.xml",
+      "break_count": 3,
+      "delivered_ad_count": 3,
+      "no_fill_break_count": 0,
+      "breaks": [
+        {
+          "break_id": "bhojon_bilashi-break-01",
+          "timestamp_seconds": 129.72,
+          "eabs": 58.51973365129321,
+          "quality_utility": 8.519733651293208,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.0751987099647522,
+            "text_semantic_change": 0.18112993240356445,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.96,
+                "percentile": 0.6933962264150944
+              },
+              "visual": {
+                "raw_context_change": 0.0751987099647522,
+                "percentile": 0.3443396226415094
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.18112993240356445,
+                "effective_length": 33.43689320388349,
+                "reliability": 0.5536212476286129,
+                "percentile": 0.8248175182481752
+              },
+              "eabs": 58.51973365129321
+            }
+          },
+          "context": {
+            "context_cues": [
+              "driving",
+              "family",
+              "outdoor",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "solara_wellness",
+            "name": "Solara Wellness",
+            "creative_uri": null,
+            "text_cosine": 0.7715637683868408,
+            "text_rank": 0.7142857142857143,
+            "visual_cosine": 0.27164098620414734,
+            "visual_rank": 0.8571428571428571,
+            "positive_context_overlap": [
+              "family",
+              "outdoor"
+            ],
+            "activity_overlap": [
+              "outdoor"
+            ],
+            "match_score": 78.57142857142857
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7715637683868408,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.27164098620414734,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "family",
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "outdoor"
+              ],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7683794498443604,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2873370051383972,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [
+                "driving",
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "driving"
+              ],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7725998163223267,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.24633777141571045,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7856210470199585,
+              "text_rank": 1.0,
+              "visual_cosine": 0.24081160128116608,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.766040563583374,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.25791171193122864,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7649784088134766,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.26579713821411133,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "outdoor"
+              ],
+              "match_score": 42.85714285714286
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7651709318161011,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.2568366527557373,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 35.71428571428571
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7626345753669739,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2446538805961609,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 7.142857142857142
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "bhojon_bilashi-scene-007",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 100.72,
+            "scene_end_seconds": 173.72,
+            "scene_duration_seconds": 73.0,
+            "nearest_scene_boundary_seconds": 100.72,
+            "distance_to_nearest_scene_boundary_seconds": 29.0,
+            "seconds_from_scene_start": 29.0,
+            "seconds_until_scene_end": 44.0
+          }
+        },
+        {
+          "break_id": "bhojon_bilashi-break-02",
+          "timestamp_seconds": 435.8,
+          "eabs": 51.753661111876234,
+          "quality_utility": 1.7536611118762337,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": false,
+            "visual_context_change": 0.19014006853103638,
+            "text_semantic_change": 0.15254229307174683,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.1,
+                "percentile": 0.2169811320754717
+              },
+              "visual": {
+                "raw_context_change": 0.19014006853103638,
+                "percentile": 0.7735849056603774
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.15254229307174683,
+                "effective_length": 75.3862433862434,
+                "reliability": 1.0,
+                "percentile": 0.5620437956204379
+              },
+              "eabs": 51.753661111876234
+            }
+          },
+          "context": {
+            "context_cues": [
+              "outdoor",
+              "romance",
+              "shopping",
+              "work"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "solara_wellness",
+            "name": "Solara Wellness",
+            "creative_uri": null,
+            "text_cosine": 0.7789918184280396,
+            "text_rank": 1.0,
+            "visual_cosine": 0.27640682458877563,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [
+              "outdoor"
+            ],
+            "activity_overlap": [
+              "outdoor"
+            ],
+            "match_score": 100.0
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7789918184280396,
+              "text_rank": 1.0,
+              "visual_cosine": 0.27640682458877563,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "outdoor"
+              ],
+              "match_score": 100.0
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7781496047973633,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.2723750174045563,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "outdoor"
+              ],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7726806998252869,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.27034953236579895,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [
+                "outdoor"
+              ],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.774302065372467,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2603427469730377,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "work"
+              ],
+              "activity_overlap": [
+                "work"
+              ],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7781933546066284,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.24348756670951843,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7532342672348022,
+              "text_rank": 0.0,
+              "visual_cosine": 0.26690322160720825,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "work"
+              ],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7707680463790894,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.2595646381378174,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "shopping",
+                "work"
+              ],
+              "activity_overlap": [
+                "shopping"
+              ],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7632377743721008,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.25923091173171997,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 14.285714285714285
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "bhojon_bilashi-scene-010",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 378.84,
+            "scene_end_seconds": 436.52,
+            "scene_duration_seconds": 57.68000000000001,
+            "nearest_scene_boundary_seconds": 436.52,
+            "distance_to_nearest_scene_boundary_seconds": 0.7199999999999704,
+            "seconds_from_scene_start": 56.960000000000036,
+            "seconds_until_scene_end": 0.7199999999999704
+          }
+        },
+        {
+          "break_id": "bhojon_bilashi-break-03",
+          "timestamp_seconds": 1031.56,
+          "eabs": 73.73909375521256,
+          "quality_utility": 23.739093755212565,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.24349594116210938,
+            "text_semantic_change": 0.2062554955482483,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.26,
+                "percentile": 0.45754716981132076
+              },
+              "visual": {
+                "raw_context_change": 0.24349594116210938,
+                "percentile": 0.8915094339622641
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.2062554955482483,
+                "effective_length": 37.18333333333333,
+                "reliability": 0.6156517971173143,
+                "percentile": 0.9416058394160584
+              },
+              "eabs": 73.73909375521256
+            }
+          },
+          "context": {
+            "context_cues": [
+              "cooking",
+              "dining",
+              "food",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "zorali_foods",
+            "name": "Zorali Foods",
+            "creative_uri": null,
+            "text_cosine": 0.8024540543556213,
+            "text_rank": 1.0,
+            "visual_cosine": 0.28947722911834717,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [
+              "cooking",
+              "dining",
+              "food"
+            ],
+            "activity_overlap": [
+              "cooking",
+              "dining"
+            ],
+            "match_score": 100.0
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.8024540543556213,
+              "text_rank": 1.0,
+              "visual_cosine": 0.28947722911834717,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [
+                "cooking",
+                "dining",
+                "food"
+              ],
+              "activity_overlap": [
+                "cooking",
+                "dining"
+              ],
+              "match_score": 100.0
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7790459990501404,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.2864375710487366,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7655572295188904,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.28649821877479553,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.8018875122070312,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.27340149879455566,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "cooking"
+              ],
+              "activity_overlap": [
+                "cooking"
+              ],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7790213823318481,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2743215560913086,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7584420442581177,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2879285514354706,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7634526491165161,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.277985155582428,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7788164019584656,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.27373024821281433,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "bhojon_bilashi-scene-027",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 968.16,
+            "scene_end_seconds": 1033.0,
+            "scene_duration_seconds": 64.84000000000003,
+            "nearest_scene_boundary_seconds": 1033.0,
+            "distance_to_nearest_scene_boundary_seconds": 1.4400000000000546,
+            "seconds_from_scene_start": 63.39999999999998,
+            "seconds_until_scene_end": 1.4400000000000546
+          }
+        }
+      ],
+      "semantic_scene_count": 35,
+      "semantic_scene_method": "development_otsu_multimodal_change"
+    },
+    {
+      "video": "indubala_bhaater_hotel.mp4",
+      "duration_seconds": 1553.88,
+      "vmap_file": "vmap/indubala_bhaater_hotel.vmap.xml",
+      "break_count": 3,
+      "delivered_ad_count": 3,
+      "no_fill_break_count": 0,
+      "breaks": [
+        {
+          "break_id": "indubala_bhaater_hotel-break-01",
+          "timestamp_seconds": 159.36,
+          "eabs": 82.09153927374557,
+          "quality_utility": 32.09153927374557,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.38146263360977173,
+            "text_semantic_change": 0.16922277212142944,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 1.47,
+                "percentile": 0.7783018867924528
+              },
+              "visual": {
+                "raw_context_change": 0.38146263360977173,
+                "percentile": 0.9764150943396226
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.16922277212142944,
+                "effective_length": 64.43835616438356,
+                "reliability": 1.0,
+                "percentile": 0.708029197080292
+              },
+              "eabs": 82.09153927374557
+            }
+          },
+          "context": {
+            "context_cues": [
+              "family",
+              "food",
+              "indoor",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "orivox_tech",
+            "name": "Orivox Tech",
+            "creative_uri": null,
+            "text_cosine": 0.7543853521347046,
+            "text_rank": 0.42857142857142855,
+            "visual_cosine": 0.2899566888809204,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [],
+            "activity_overlap": [],
+            "match_score": 71.42857142857143
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7543853521347046,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.2899566888809204,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7589879035949707,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2851734161376953,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 71.42857142857142
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7633091807365417,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.28353288769721985,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7737123966217041,
+              "text_rank": 1.0,
+              "visual_cosine": 0.2752501368522644,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "family",
+                "indoor"
+              ],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7676758766174316,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.27336010336875916,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "family",
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7350702881813049,
+              "text_rank": 0.0,
+              "visual_cosine": 0.28502166271209717,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 35.714285714285715
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7390772104263306,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.28314200043678284,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 35.71428571428571
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7380369901657104,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.2829149067401886,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 21.428571428571427
+            }
+          ],
+          "semantic_scene": {
+            "relation": "exact_scene_boundary",
+            "scene_id": "indubala_bhaater_hotel-scene-005",
+            "previous_scene_id": "indubala_bhaater_hotel-scene-004",
+            "next_scene_id": "indubala_bhaater_hotel-scene-005",
+            "scene_start_seconds": 159.36,
+            "scene_end_seconds": 206.4,
+            "scene_duration_seconds": 47.03999999999999,
+            "nearest_scene_boundary_seconds": 159.36,
+            "distance_to_nearest_scene_boundary_seconds": 0.0,
+            "seconds_from_scene_start": 0.0,
+            "seconds_until_scene_end": 47.03999999999999
+          }
+        },
+        {
+          "break_id": "indubala_bhaater_hotel-break-02",
+          "timestamp_seconds": 851.6,
+          "eabs": 68.39622641509435,
+          "quality_utility": 18.396226415094347,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.16375517845153809,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.73,
+                "percentile": 0.6556603773584906
+              },
+              "visual": {
+                "raw_context_change": 0.16375517845153809,
+                "percentile": 0.7122641509433962
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 68.39622641509435
+            }
+          },
+          "context": {
+            "context_cues": [
+              "conversation",
+              "food",
+              "indoor",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "orivox_tech",
+            "name": "Orivox Tech",
+            "creative_uri": null,
+            "text_cosine": 0.7637865543365479,
+            "text_rank": 0.8571428571428571,
+            "visual_cosine": 0.27750828862190247,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [
+              "conversation"
+            ],
+            "activity_overlap": [],
+            "match_score": 92.85714285714286
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7637865543365479,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.27750828862190247,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [
+                "conversation"
+              ],
+              "activity_overlap": [],
+              "match_score": 92.85714285714286
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7655556797981262,
+              "text_rank": 1.0,
+              "visual_cosine": 0.2663329243659973,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 85.71428571428572
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7627503871917725,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.2635937035083771,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "conversation",
+                "indoor"
+              ],
+              "activity_overlap": [
+                "conversation"
+              ],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7613078355789185,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.265636146068573,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "conversation"
+              ],
+              "activity_overlap": [
+                "conversation"
+              ],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7553241848945618,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.2764241397380829,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7609066367149353,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.26157864928245544,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 35.71428571428571
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7579989433288574,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.2612098455429077,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 21.428571428571427
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7548829317092896,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2578168511390686,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 0.0
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "indubala_bhaater_hotel-scene-026",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 819.76,
+            "scene_end_seconds": 856.28,
+            "scene_duration_seconds": 36.51999999999998,
+            "nearest_scene_boundary_seconds": 856.28,
+            "distance_to_nearest_scene_boundary_seconds": 4.67999999999995,
+            "seconds_from_scene_start": 31.840000000000032,
+            "seconds_until_scene_end": 4.67999999999995
+          }
+        },
+        {
+          "break_id": "indubala_bhaater_hotel-break-03",
+          "timestamp_seconds": 1432.0,
+          "eabs": 60.26621623111349,
+          "quality_utility": 10.26621623111349,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": false,
+            "visual_context_change": 0.21163225173950195,
+            "text_semantic_change": 0.1399829387664795,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.23,
+                "percentile": 0.419811320754717
+              },
+              "visual": {
+                "raw_context_change": 0.21163225173950195,
+                "percentile": 0.8160377358490566
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.1399829387664795,
+                "effective_length": 8.842105263157896,
+                "reliability": 0.14640048396854205,
+                "percentile": 0.39416058394160586
+              },
+              "eabs": 60.26621623111349
+            }
+          },
+          "context": {
+            "context_cues": [
+              "driving",
+              "family",
+              "food",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "velune_mobility",
+            "name": "Velune Mobility",
+            "creative_uri": null,
+            "text_cosine": 0.7718518972396851,
+            "text_rank": 0.8571428571428571,
+            "visual_cosine": 0.26926788687705994,
+            "visual_rank": 0.8571428571428571,
+            "positive_context_overlap": [
+              "driving"
+            ],
+            "activity_overlap": [
+              "driving"
+            ],
+            "match_score": 85.71428571428571
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7718518972396851,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.26926788687705994,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "driving"
+              ],
+              "activity_overlap": [
+                "driving"
+              ],
+              "match_score": 85.71428571428571
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7709554433822632,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.26742929220199585,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.773025393486023,
+              "text_rank": 1.0,
+              "visual_cosine": 0.2612873911857605,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7618817090988159,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.2701801657676697,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7701197266578674,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.26362845301628113,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.770765483379364,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.25565221905708313,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7688639163970947,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.25895583629608154,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "family",
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7603299617767334,
+              "text_rank": 0.0,
+              "visual_cosine": 0.25793206691741943,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 7.142857142857142
+            }
+          ],
+          "semantic_scene": {
+            "relation": "exact_scene_boundary",
+            "scene_id": "indubala_bhaater_hotel-scene-041",
+            "previous_scene_id": "indubala_bhaater_hotel-scene-040",
+            "next_scene_id": "indubala_bhaater_hotel-scene-041",
+            "scene_start_seconds": 1432.0,
+            "scene_end_seconds": 1478.88,
+            "scene_duration_seconds": 46.88000000000011,
+            "nearest_scene_boundary_seconds": 1432.0,
+            "distance_to_nearest_scene_boundary_seconds": 0.0,
+            "seconds_from_scene_start": 0.0,
+            "seconds_until_scene_end": 46.88000000000011
+          }
+        }
+      ],
+      "semantic_scene_count": 42,
+      "semantic_scene_method": "development_otsu_multimodal_change"
+    },
+    {
+      "video": "mandaar.mp4",
+      "duration_seconds": 2349.375,
+      "vmap_file": "vmap/mandaar.vmap.xml",
+      "break_count": 4,
+      "delivered_ad_count": 4,
+      "no_fill_break_count": 0,
+      "breaks": [
+        {
+          "break_id": "mandaar-break-01",
+          "timestamp_seconds": 160.667,
+          "eabs": 85.61320754716981,
+          "quality_utility": 35.61320754716981,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.3751376271247864,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 1.217,
+                "percentile": 0.7405660377358491
+              },
+              "visual": {
+                "raw_context_change": 0.3751376271247864,
+                "percentile": 0.9716981132075472
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 85.61320754716981
+            }
+          },
+          "context": {
+            "context_cues": [
+              "cooking",
+              "dining",
+              "food",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "orivox_tech",
+            "name": "Orivox Tech",
+            "creative_uri": null,
+            "text_cosine": 0.7773648500442505,
+            "text_rank": 0.8571428571428571,
+            "visual_cosine": 0.28972476720809937,
+            "visual_rank": 0.7142857142857143,
+            "positive_context_overlap": [],
+            "activity_overlap": [],
+            "match_score": 78.57142857142857
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7773648500442505,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.28972476720809937,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7759182453155518,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.2890726327896118,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7680957317352295,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.31594517827033997,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7844753265380859,
+              "text_rank": 1.0,
+              "visual_cosine": 0.28084200620651245,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "cooking",
+                "dining",
+                "food"
+              ],
+              "activity_overlap": [
+                "cooking",
+                "dining"
+              ],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.764799952507019,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.3104327619075775,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7699495553970337,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.2789575457572937,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.772542417049408,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.249536395072937,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "cooking"
+              ],
+              "activity_overlap": [
+                "cooking"
+              ],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7627775073051453,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2879323959350586,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 21.428571428571427
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "mandaar-scene-004",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 123.167,
+            "scene_end_seconds": 168.333,
+            "scene_duration_seconds": 45.166,
+            "nearest_scene_boundary_seconds": 168.333,
+            "distance_to_nearest_scene_boundary_seconds": 7.665999999999997,
+            "seconds_from_scene_start": 37.5,
+            "seconds_until_scene_end": 7.665999999999997
+          }
+        },
+        {
+          "break_id": "mandaar-break-02",
+          "timestamp_seconds": 667.25,
+          "eabs": 91.74528301886792,
+          "quality_utility": 41.74528301886792,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.29514336585998535,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 4.4,
+                "percentile": 0.9009433962264151
+              },
+              "visual": {
+                "raw_context_change": 0.29514336585998535,
+                "percentile": 0.9339622641509434
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 91.74528301886792
+            }
+          },
+          "context": {
+            "context_cues": [
+              "dining",
+              "education",
+              "food",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "velune_mobility",
+            "name": "Velune Mobility",
+            "creative_uri": null,
+            "text_cosine": null,
+            "text_rank": null,
+            "visual_cosine": 0.2945029139518738,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [],
+            "activity_overlap": [],
+            "match_score": 100.0
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2945029139518738,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 100.0
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2893455922603607,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 85.71428571428571
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.28573906421661377,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [
+                "education"
+              ],
+              "activity_overlap": [
+                "education"
+              ],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.28373584151268005,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2800634801387787,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "education"
+              ],
+              "activity_overlap": [
+                "education"
+              ],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.25998836755752563,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.25904133915901184,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "dining",
+                "food"
+              ],
+              "activity_overlap": [
+                "dining"
+              ],
+              "match_score": 14.285714285714285
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2516188323497772,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 0.0
+            }
+          ],
+          "semantic_scene": {
+            "relation": "exact_scene_boundary",
+            "scene_id": "mandaar-scene-014",
+            "previous_scene_id": "mandaar-scene-013",
+            "next_scene_id": "mandaar-scene-014",
+            "scene_start_seconds": 667.25,
+            "scene_end_seconds": 683.333,
+            "scene_duration_seconds": 16.08299999999997,
+            "nearest_scene_boundary_seconds": 667.25,
+            "distance_to_nearest_scene_boundary_seconds": 0.0,
+            "seconds_from_scene_start": 0.0,
+            "seconds_until_scene_end": 16.08299999999997
+          }
+        },
+        {
+          "break_id": "mandaar-break-03",
+          "timestamp_seconds": 1390.375,
+          "eabs": 87.26415094339623,
+          "quality_utility": 37.26415094339623,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.2015807032585144,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 10.385,
+                "percentile": 0.9528301886792453
+              },
+              "visual": {
+                "raw_context_change": 0.2015807032585144,
+                "percentile": 0.7924528301886793
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 87.26415094339623
+            }
+          },
+          "context": {
+            "context_cues": [
+              "education",
+              "food",
+              "romance",
+              "technology"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "solara_wellness",
+            "name": "Solara Wellness",
+            "creative_uri": null,
+            "text_cosine": null,
+            "text_rank": null,
+            "visual_cosine": 0.26320892572402954,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [],
+            "activity_overlap": [],
+            "match_score": 100.0
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.26320892572402954,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 100.0
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2596370279788971,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "technology"
+              ],
+              "activity_overlap": [],
+              "match_score": 85.71428571428571
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.25398483872413635,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [
+                "education",
+                "technology"
+              ],
+              "activity_overlap": [
+                "education",
+                "technology"
+              ],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2521475851535797,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.25034984946250916,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "education",
+                "technology"
+              ],
+              "activity_overlap": [
+                "education",
+                "technology"
+              ],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.24956436455249786,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "technology"
+              ],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.24685882031917572,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 14.285714285714285
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.24281276762485504,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 0.0
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "mandaar-scene-025",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 1208.75,
+            "scene_end_seconds": 1413.083,
+            "scene_duration_seconds": 204.33300000000008,
+            "nearest_scene_boundary_seconds": 1413.083,
+            "distance_to_nearest_scene_boundary_seconds": 22.708000000000084,
+            "seconds_from_scene_start": 181.625,
+            "seconds_until_scene_end": 22.708000000000084
+          }
+        },
+        {
+          "break_id": "mandaar-break-04",
+          "timestamp_seconds": 1707.708,
+          "eabs": 85.14150943396226,
+          "quality_utility": 35.141509433962256,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.23868799209594727,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 2.232,
+                "percentile": 0.8254716981132075
+              },
+              "visual": {
+                "raw_context_change": 0.23868799209594727,
+                "percentile": 0.8773584905660378
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 85.14150943396226
+            }
+          },
+          "context": {
+            "context_cues": [
+              "cooking",
+              "food",
+              "romance",
+              "technology"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "zorali_foods",
+            "name": "Zorali Foods",
+            "creative_uri": null,
+            "text_cosine": null,
+            "text_rank": null,
+            "visual_cosine": 0.28002700209617615,
+            "visual_rank": 1.0,
+            "positive_context_overlap": [
+              "cooking",
+              "food"
+            ],
+            "activity_overlap": [
+              "cooking"
+            ],
+            "match_score": 100.0
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.28002700209617615,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [
+                "cooking",
+                "food"
+              ],
+              "activity_overlap": [
+                "cooking"
+              ],
+              "match_score": 100.0
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.27709832787513733,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "technology"
+              ],
+              "activity_overlap": [],
+              "match_score": 85.71428571428571
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.27695852518081665,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [
+                "technology"
+              ],
+              "activity_overlap": [
+                "technology"
+              ],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2762957811355591,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.27319082617759705,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "technology"
+              ],
+              "activity_overlap": [
+                "technology"
+              ],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2731083333492279,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "cooking"
+              ],
+              "activity_overlap": [
+                "cooking"
+              ],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2658204138278961,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "technology"
+              ],
+              "activity_overlap": [],
+              "match_score": 14.285714285714285
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": null,
+              "text_rank": null,
+              "visual_cosine": 0.2657037675380707,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 0.0
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "mandaar-scene-030",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 1619.792,
+            "scene_end_seconds": 1721.792,
+            "scene_duration_seconds": 102.0,
+            "nearest_scene_boundary_seconds": 1721.792,
+            "distance_to_nearest_scene_boundary_seconds": 14.083999999999833,
+            "seconds_from_scene_start": 87.91600000000017,
+            "seconds_until_scene_end": 14.083999999999833
+          }
+        }
+      ],
+      "semantic_scene_count": 43,
+      "semantic_scene_method": "development_otsu_multimodal_change"
+    },
+    {
+      "video": "mohanagar.mp4",
+      "duration_seconds": 1396.6,
+      "vmap_file": "vmap/mohanagar.vmap.xml",
+      "break_count": 2,
+      "delivered_ad_count": 2,
+      "no_fill_break_count": 0,
+      "breaks": [
+        {
+          "break_id": "mohanagar-break-01",
+          "timestamp_seconds": 203.64,
+          "eabs": 80.18867924528301,
+          "quality_utility": 30.188679245283012,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.20205122232437134,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 1.92,
+                "percentile": 0.8066037735849056
+              },
+              "visual": {
+                "raw_context_change": 0.20205122232437134,
+                "percentile": 0.7971698113207547
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 80.18867924528301
+            }
+          },
+          "context": {
+            "context_cues": [
+              "cooking",
+              "family",
+              "food",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "tavira_travel",
+            "name": "Tavira Travel",
+            "creative_uri": null,
+            "text_cosine": 0.7715663313865662,
+            "text_rank": 1.0,
+            "visual_cosine": 0.2844077944755554,
+            "visual_rank": 0.7142857142857143,
+            "positive_context_overlap": [],
+            "activity_overlap": [],
+            "match_score": 85.71428571428572
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7715663313865662,
+              "text_rank": 1.0,
+              "visual_cosine": 0.2844077944755554,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 85.71428571428572
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7647407054901123,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.28710851073265076,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7676142454147339,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.2748648524284363,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7564530372619629,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2944273054599762,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.760869026184082,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.2832464277744293,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7672063112258911,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.24830083549022675,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "cooking",
+                "family"
+              ],
+              "activity_overlap": [
+                "cooking"
+              ],
+              "match_score": 35.714285714285715
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7670730352401733,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2647922933101654,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "cooking",
+                "family",
+                "food"
+              ],
+              "activity_overlap": [
+                "cooking"
+              ],
+              "match_score": 35.71428571428571
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7606480717658997,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.2801649272441864,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 28.57142857142857
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "mohanagar-scene-006",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 182.36,
+            "scene_end_seconds": 262.44,
+            "scene_duration_seconds": 80.07999999999998,
+            "nearest_scene_boundary_seconds": 182.36,
+            "distance_to_nearest_scene_boundary_seconds": 21.279999999999973,
+            "seconds_from_scene_start": 21.279999999999973,
+            "seconds_until_scene_end": 58.80000000000001
+          }
+        },
+        {
+          "break_id": "mohanagar-break-02",
+          "timestamp_seconds": 1217.88,
+          "eabs": 65.88459426761362,
+          "quality_utility": 15.884594267613622,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.16549623012542725,
+            "text_semantic_change": 0.2216256856918335,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.51,
+                "percentile": 0.5801886792452831
+              },
+              "visual": {
+                "raw_context_change": 0.16549623012542725,
+                "percentile": 0.7169811320754716
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.2216256856918335,
+                "effective_length": 3.8823529411764706,
+                "reliability": 0.06428088476770018,
+                "percentile": 0.9781021897810219
+              },
+              "eabs": 65.88459426761362
+            }
+          },
+          "context": {
+            "context_cues": [
+              "family",
+              "food",
+              "indoor",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "kiven_finance",
+            "name": "Kiven Finance",
+            "creative_uri": null,
+            "text_cosine": 0.7664637565612793,
+            "text_rank": 0.7142857142857143,
+            "visual_cosine": 0.2519901692867279,
+            "visual_rank": 0.8571428571428571,
+            "positive_context_overlap": [
+              "family"
+            ],
+            "activity_overlap": [],
+            "match_score": 78.57142857142857
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7664637565612793,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.2519901692867279,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.7656732797622681,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.24863609671592712,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7673537731170654,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.23647454380989075,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7681506872177124,
+              "text_rank": 1.0,
+              "visual_cosine": 0.23193831741809845,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "family",
+                "indoor"
+              ],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7483004927635193,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2546777129173279,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7582805752754211,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.2447044402360916,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 42.857142857142854
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7551294565200806,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.24778373539447784,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 35.71428571428571
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7578943371772766,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.23582056164741516,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "family",
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 21.428571428571427
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "mohanagar-scene-021",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 1214.48,
+            "scene_end_seconds": 1241.84,
+            "scene_duration_seconds": 27.3599999999999,
+            "nearest_scene_boundary_seconds": 1214.48,
+            "distance_to_nearest_scene_boundary_seconds": 3.400000000000091,
+            "seconds_from_scene_start": 3.400000000000091,
+            "seconds_until_scene_end": 23.95999999999981
+          }
+        }
+      ],
+      "semantic_scene_count": 23,
+      "semantic_scene_method": "development_otsu_multimodal_change"
+    },
+    {
+      "video": "money_honey.mp4",
+      "duration_seconds": 1301.68,
+      "vmap_file": "vmap/money_honey.vmap.xml",
+      "break_count": 2,
+      "delivered_ad_count": 2,
+      "no_fill_break_count": 0,
+      "breaks": [
+        {
+          "break_id": "money_honey-break-01",
+          "timestamp_seconds": 250.24,
+          "eabs": 73.50227005794996,
+          "quality_utility": 23.502270057949957,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.2500568628311157,
+            "text_semantic_change": 0.2060927152633667,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.44,
+                "percentile": 0.5518867924528302
+              },
+              "visual": {
+                "raw_context_change": 0.2500568628311157,
+                "percentile": 0.9009433962264151
+              },
+              "text": {
+                "available": true,
+                "raw_semantic_change": 0.2060927152633667,
+                "effective_length": 5.217391304347826,
+                "reliability": 0.08638537873920182,
+                "percentile": 0.9343065693430657
+              },
+              "eabs": 73.50227005794996
+            }
+          },
+          "context": {
+            "context_cues": [
+              "conversation",
+              "family",
+              "food",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "orivox_tech",
+            "name": "Orivox Tech",
+            "creative_uri": null,
+            "text_cosine": 0.771822452545166,
+            "text_rank": 1.0,
+            "visual_cosine": 0.265845388174057,
+            "visual_rank": 0.5714285714285714,
+            "positive_context_overlap": [
+              "conversation"
+            ],
+            "activity_overlap": [],
+            "match_score": 78.57142857142857
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.771822452545166,
+              "text_rank": 1.0,
+              "visual_cosine": 0.265845388174057,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "conversation"
+              ],
+              "activity_overlap": [],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.768407940864563,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2784230411052704,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 78.57142857142857
+            },
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7700093984603882,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.27319565415382385,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 71.42857142857143
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7713503837585449,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.25767046213150024,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "conversation",
+                "family"
+              ],
+              "activity_overlap": [
+                "conversation"
+              ],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7633423805236816,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.2752667963504791,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "conversation",
+                "family"
+              ],
+              "activity_overlap": [
+                "conversation"
+              ],
+              "match_score": 50.0
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7651766538619995,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.2624397575855255,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 35.71428571428571
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7582999467849731,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2644195854663849,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [
+                "family"
+              ],
+              "activity_overlap": [],
+              "match_score": 21.428571428571427
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7639772891998291,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.2532593309879303,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "family",
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 14.285714285714285
+            }
+          ],
+          "semantic_scene": {
+            "relation": "exact_scene_boundary",
+            "scene_id": "money_honey-scene-009",
+            "previous_scene_id": "money_honey-scene-008",
+            "next_scene_id": "money_honey-scene-009",
+            "scene_start_seconds": 250.24,
+            "scene_end_seconds": 402.0,
+            "scene_duration_seconds": 151.76,
+            "nearest_scene_boundary_seconds": 250.24,
+            "distance_to_nearest_scene_boundary_seconds": 0.0,
+            "seconds_from_scene_start": 0.0,
+            "seconds_until_scene_end": 151.76
+          }
+        },
+        {
+          "break_id": "money_honey-break-02",
+          "timestamp_seconds": 1062.44,
+          "eabs": 65.09433962264151,
+          "quality_utility": 15.094339622641513,
+          "delivery_status": "filled",
+          "delivery_reason": null,
+          "boundary_evidence": {
+            "centered_pause": true,
+            "visual_context_change": 0.1480722427368164,
+            "text_semantic_change": null,
+            "break_score": {
+              "ad_eligible": true,
+              "rejection_reasons": [],
+              "scorable": true,
+              "acoustic": {
+                "raw_pause_margin": 0.7,
+                "percentile": 0.6320754716981132
+              },
+              "visual": {
+                "raw_context_change": 0.1480722427368164,
+                "percentile": 0.6698113207547169
+              },
+              "text": {
+                "available": false,
+                "raw_semantic_change": null,
+                "effective_length": 0.0,
+                "reliability": 0.0,
+                "percentile": null
+              },
+              "eabs": 65.09433962264151
+            }
+          },
+          "context": {
+            "context_cues": [
+              "conversation",
+              "food",
+              "outdoor",
+              "romance"
+            ],
+            "hard_safety_contexts": [],
+            "lexical_safety_hits": [],
+            "consensus_safety_hits": []
+          },
+          "brand_safety": {
+            "blocked_brands": [],
+            "eligible_brand_ids": [
+              "zorali_foods",
+              "nimora_home",
+              "velune_mobility",
+              "arovia_learning",
+              "kiven_finance",
+              "solara_wellness",
+              "tavira_travel",
+              "orivox_tech"
+            ]
+          },
+          "selected_brand": {
+            "brand_id": "velune_mobility",
+            "name": "Velune Mobility",
+            "creative_uri": null,
+            "text_cosine": 0.7928060293197632,
+            "text_rank": 1.0,
+            "visual_cosine": 0.2637094557285309,
+            "visual_rank": 0.8571428571428571,
+            "positive_context_overlap": [
+              "outdoor"
+            ],
+            "activity_overlap": [],
+            "match_score": 92.85714285714286
+          },
+          "brand_ranking": [
+            {
+              "brand_id": "velune_mobility",
+              "name": "Velune Mobility",
+              "creative_uri": "/creatives/velune_mobility.mp4",
+              "text_cosine": 0.7928060293197632,
+              "text_rank": 1.0,
+              "visual_cosine": 0.2637094557285309,
+              "visual_rank": 0.8571428571428571,
+              "positive_context_overlap": [
+                "outdoor"
+              ],
+              "activity_overlap": [],
+              "match_score": 92.85714285714286
+            },
+            {
+              "brand_id": "solara_wellness",
+              "name": "Solara Wellness",
+              "creative_uri": "/creatives/solara_wellness.mp4",
+              "text_cosine": 0.7823504209518433,
+              "text_rank": 0.2857142857142857,
+              "visual_cosine": 0.26928943395614624,
+              "visual_rank": 1.0,
+              "positive_context_overlap": [
+                "conversation",
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "conversation",
+                "outdoor"
+              ],
+              "match_score": 64.28571428571428
+            },
+            {
+              "brand_id": "arovia_learning",
+              "name": "Arovia Learning",
+              "creative_uri": "/creatives/arovia_learning.mp4",
+              "text_cosine": 0.7853163480758667,
+              "text_rank": 0.7142857142857143,
+              "visual_cosine": 0.24653667211532593,
+              "visual_rank": 0.42857142857142855,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "kiven_finance",
+              "name": "Kiven Finance",
+              "creative_uri": "/creatives/kiven_finance.mp4",
+              "text_cosine": 0.7907776236534119,
+              "text_rank": 0.8571428571428571,
+              "visual_cosine": 0.23585976660251617,
+              "visual_rank": 0.2857142857142857,
+              "positive_context_overlap": [],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "orivox_tech",
+              "name": "Orivox Tech",
+              "creative_uri": "/creatives/orivox_tech.mp4",
+              "text_cosine": 0.784664511680603,
+              "text_rank": 0.5714285714285714,
+              "visual_cosine": 0.2546354830265045,
+              "visual_rank": 0.5714285714285714,
+              "positive_context_overlap": [
+                "conversation"
+              ],
+              "activity_overlap": [],
+              "match_score": 57.14285714285714
+            },
+            {
+              "brand_id": "tavira_travel",
+              "name": "Tavira Travel",
+              "creative_uri": "/creatives/tavira_travel.mp4",
+              "text_cosine": 0.7716557383537292,
+              "text_rank": 0.0,
+              "visual_cosine": 0.2624824643135071,
+              "visual_rank": 0.7142857142857143,
+              "positive_context_overlap": [
+                "outdoor"
+              ],
+              "activity_overlap": [
+                "outdoor"
+              ],
+              "match_score": 35.714285714285715
+            },
+            {
+              "brand_id": "nimora_home",
+              "name": "Nimora Home",
+              "creative_uri": "/creatives/nimora_home.mp4",
+              "text_cosine": 0.7839542627334595,
+              "text_rank": 0.42857142857142855,
+              "visual_cosine": 0.23316754400730133,
+              "visual_rank": 0.14285714285714285,
+              "positive_context_overlap": [
+                "conversation"
+              ],
+              "activity_overlap": [
+                "conversation"
+              ],
+              "match_score": 28.57142857142857
+            },
+            {
+              "brand_id": "zorali_foods",
+              "name": "Zorali Foods",
+              "creative_uri": "/creatives/zorali_foods.mp4",
+              "text_cosine": 0.7808132171630859,
+              "text_rank": 0.14285714285714285,
+              "visual_cosine": 0.23106606304645538,
+              "visual_rank": 0.0,
+              "positive_context_overlap": [
+                "food"
+              ],
+              "activity_overlap": [],
+              "match_score": 7.142857142857142
+            }
+          ],
+          "semantic_scene": {
+            "relation": "within_scene",
+            "scene_id": "money_honey-scene-020",
+            "previous_scene_id": null,
+            "next_scene_id": null,
+            "scene_start_seconds": 1054.72,
+            "scene_end_seconds": 1065.6,
+            "scene_duration_seconds": 10.879999999999882,
+            "nearest_scene_boundary_seconds": 1065.6,
+            "distance_to_nearest_scene_boundary_seconds": 3.1599999999998545,
+            "seconds_from_scene_start": 7.720000000000027,
+            "seconds_until_scene_end": 3.1599999999998545
+          }
+        }
+      ],
+      "semantic_scene_count": 25,
+      "semantic_scene_method": "development_otsu_multimodal_change"
+    }
+  ],
+  "summary": {
+    "video_count": 5,
+    "break_count": 14,
+    "scheduled_break_count": 14,
+    "delivered_ad_count": 14,
+    "no_fill_break_count": 0,
+    "matched_break_count": 14,
+    "unmatched_break_count": 0,
+    "resolved_break_count": 14,
+    "all_breaks_resolved": true,
+    "negative_context_violations": 0,
+    "all_breaks_have_brand": true,
+    "all_selected_brands_safe": true
+  },
+  "semantic_scene_segmentation": {
+    "schema_version": "1.0",
+    "method": "development_otsu_multimodal_change",
+    "calibration_mode": "fitted_and_frozen",
+    "held_out_used_for_fit": false,
+    "role": "explanatory narrative structure; does not modify frozen EABS or break optimization"
+  },
+  "public_demo": {
+    "media_hosted": false,
+    "reason": "Supplied hackathon source videos are not redistributed by this repository.",
+    "local_file_playback_supported": true
+  }
+}

@@ -50,3 +50,10 @@ frontend/dist/
 !.env.example
 
 *.egg-info/
+
+# Copyright-safe public demo fixture
+!docs/
+!docs/**
+
+!docs/media/
+!docs/media/synthetic-fixture.mp4

@@ -1,0 +1,33 @@
+{
+  "fixture_type": "synthetic_player_mechanics_only",
+  "model_evaluation": false,
+  "video": "synthetic-fixture.mp4",
+  "duration_seconds": 45.0,
+  "breaks": [
+    {
+      "break_id": "fixture-break-01",
+      "timestamp_seconds": 15.0,
+      "eabs": null,
+      "quality_utility": null,
+      "delivery_status": "filled",
+      "context": {
+        "context_cues": [
+          "technology",
+          "conversation"
+        ],
+        "hard_safety_contexts": []
+      },
+      "brand_safety": {
+        "blocked_brands": []
+      },
+      "selected_brand": {
+        "brand_id": "orivox_tech",
+        "name": "Orivox Tech"
+      },
+      "brand_ranking": [],
+      "semantic_scene": {
+        "relation": "synthetic_fixture"
+      }
+    }
+  ]
+}
