@@ -1,0 +1,10 @@
+{
+  "policy_name": "development-demo-v1",
+  "policy_status": "development_demo_not_organizer_spec",
+  "minimum_first_break_seconds": 120,
+  "minimum_end_buffer_seconds": 120,
+  "minimum_gap_seconds": 300,
+  "max_breaks_per_hour": 4,
+  "maximum_ad_load_fraction": 0.08,
+  "nominal_ad_duration_seconds": 30
+}

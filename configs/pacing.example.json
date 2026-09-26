@@ -1,5 +1,10 @@
 {
-  "max_breaks_per_hour": null,
+  "policy_name": null,
+  "policy_status": null,
+  "minimum_first_break_seconds": null,
+  "minimum_end_buffer_seconds": null,
   "minimum_gap_seconds": null,
-  "maximum_ad_load_fraction": null
+  "max_breaks_per_hour": null,
+  "maximum_ad_load_fraction": null,
+  "nominal_ad_duration_seconds": null
 }
