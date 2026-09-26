@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AdContext ? Context-Aware Ad Placement</title>
+<title>AdContext — Context-Aware Ad Placement</title>
 
 <style>
 :root{
@@ -354,19 +354,19 @@ footer{
 <section class="metrics">
   <div class="metric panel">
     <small>Production speech interruption</small>
-    <div id="prodMetric" class="big good">?</div>
+    <div id="prodMetric" class="big good">—</div>
     <small>development-set VAD safety proxy</small>
   </div>
 
   <div class="metric panel">
     <small>Visual-only baseline</small>
-    <div id="visualMetric" class="big warn">?</div>
+    <div id="visualMetric" class="big warn">—</div>
     <small>same inventory where feasible</small>
   </div>
 
   <div class="metric panel">
     <small>Periodic baseline</small>
-    <div id="periodicMetric" class="big warn">?</div>
+    <div id="periodicMetric" class="big warn">—</div>
     <small>fixed five-minute placement</small>
   </div>
 </section>
@@ -393,7 +393,7 @@ footer{
         <div id="fixtureAd" class="ad hidden">
           <div>
             <div class="eyebrow">SYNTHETIC CONTEXT-MATCHED AD</div>
-            <h2 id="fixtureBrand">?</h2>
+            <h2 id="fixtureBrand">—</h2>
             <p>Generated advertiser used only for the hackathon demo.</p>
             <div id="fixtureCountdown" class="count"></div>
           </div>
@@ -411,7 +411,7 @@ footer{
 
       <div class="row">
         <small>Scheduled timestamp</small>
-        <b id="fixtureTime">?</b>
+        <b id="fixtureTime">—</b>
       </div>
 
       <div class="row">
@@ -477,7 +477,7 @@ footer{
         <div id="localAd" class="ad hidden">
           <div>
             <div class="eyebrow">CONTEXT-MATCHED SYNTHETIC AD</div>
-            <h2 id="localBrand">?</h2>
+            <h2 id="localBrand">—</h2>
             <p id="localAdReason"></p>
             <div id="localCountdown" class="count"></div>
           </div>
@@ -495,12 +495,12 @@ footer{
 
       <div class="row">
         <small>EABS</small>
-        <b id="localEabs">?</b>
+        <b id="localEabs">—</b>
       </div>
 
       <div class="row">
         <small>Semantic scene</small>
-        <b id="localScene">?</b>
+        <b id="localScene">—</b>
       </div>
 
       <div class="row">
@@ -515,7 +515,7 @@ footer{
 
       <div class="row">
         <small>Selected brand</small>
-        <b id="localSelectedBrand">?</b>
+        <b id="localSelectedBrand">—</b>
       </div>
     </aside>
   </div>
@@ -531,12 +531,12 @@ footer{
 <script>
 const $ = id => document.getElementById(id);
 const fmt = s => {
-  if (!Number.isFinite(s)) return '?';
+  if (!Number.isFinite(s)) return '—';
   const m = Math.floor(s / 60);
   const r = Math.floor(s % 60);
   return String(m).padStart(2,'0') + ':' + String(r).padStart(2,'0');
 };
-const pct = x => x == null ? '?' : (100*x).toFixed(1) + '%';
+const pct = x => x == null ? '—' : (100*x).toFixed(1) + '%';
 
 let modelManifest = null;
 let fixtureManifest = null;
@@ -694,12 +694,12 @@ function renderEvidence(){
         ? 'exact scene boundary'
         : scene
           ? `within ${scene.scene_id} / ${scene.distance_to_nearest_scene_boundary_seconds?.toFixed(1)}s from nearest scene boundary`
-          : '?';
+          : '—';
 
     const brand =
       b.delivery_status === 'no_fill_brand_safety'
         ? 'NO-FILL'
-        : (b.selected_brand?.name || b.selected_brand?.brand_id || '?');
+        : (b.selected_brand?.name || b.selected_brand?.brand_id || '—');
 
     const safety =
       b.context?.hard_safety_contexts?.length
@@ -781,7 +781,7 @@ function updateLocalTrace(){
       ? 'Exact semantic-scene transition'
       : scene
         ? `${scene.scene_id} / ${scene.distance_to_nearest_scene_boundary_seconds.toFixed(1)}s from nearest transition`
-        : '?';
+        : '—';
 
   chips(
     $('localContext'),
@@ -795,8 +795,8 @@ function updateLocalTrace(){
 
   $('localSelectedBrand').textContent =
     b.delivery_status === 'no_fill_brand_safety'
-      ? 'NO-FILL ? all advertisers hard-blocked'
-      : (b.selected_brand?.name || b.selected_brand?.brand_id || '?');
+      ? 'NO-FILL — all advertisers hard-blocked'
+      : (b.selected_brand?.name || b.selected_brand?.brand_id || '—');
 }
 
 function renderLocalTimeline(){
@@ -813,7 +813,7 @@ function renderLocalTimeline(){
     marker.style.left =
       (100 * b.timestamp_seconds / localModel.duration_seconds) + '%';
     marker.title =
-      `${fmt(b.timestamp_seconds)} ? ${b.delivery_status}`;
+      `${fmt(b.timestamp_seconds)} / ${b.delivery_status}`;
     track.appendChild(marker);
   });
 }

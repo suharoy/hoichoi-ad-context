@@ -4,14 +4,24 @@ version = "0.1.0"
 description = "Context-aware video segmentation and intelligent ad placement pipeline"
 requires-python = ">=3.11"
 dependencies = [
+    "numpy",
     "scipy>=1.18,<2",
+    "Pillow>=10,<13",
+    "torch",
+    "transformers",
+    "sentence-transformers",
+    "webrtcvad-wheels",
+    "onnx-asr[cpu,hub]==0.12.0",
+    "faster-whisper",
+    "scenedetect[opencv]",
     "fastapi>=0.115,<1",
     "uvicorn[standard]>=0.30,<1",
-    "Pillow>=10,<13",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = [
+    "pytest>=8",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
