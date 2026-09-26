@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "method": "development_otsu_multimodal_change",
+  "development_videos": [
+    "bhojon_bilashi",
+    "indubala_bhaater_hotel",
+    "mandaar",
+    "mohanagar",
+    "money_honey"
+  ],
+  "source_sha256": "aa925342a9ae1f8fb34f72a3bde34139574db137f6d6bb33f930cd7dba779ef0",
+  "visual_reference_count": 1465,
+  "text_reference_count": 222,
+  "visual_otsu_threshold": 0.15685737133026123,
+  "text_otsu_threshold": 0.15484920144081116,
+  "reference_text_length": 61.99747899159664,
+  "fusion": "(visual_change/visual_otsu + text_reliability*(text_change/text_otsu)) / (1+text_reliability)",
+  "boundary_rule": "transition_strength >= 1.0",
+  "adjacent_suppression": "collapse each consecutive run of strong shot boundaries to the maximum-strength boundary",
+  "held_out_used_for_fit": false
+}
