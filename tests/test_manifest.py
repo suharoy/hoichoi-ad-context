@@ -243,3 +243,127 @@ def test_manifest_rejects_unsafe_summary():
             "Unsafe manifest "
             "should have failed"
         )
+
+
+
+def test_no_fill_is_a_resolved_non_delivery():
+    optimized = sample_optimized()
+    matches = sample_matches()
+
+    matches["summary"]["brand_count"] = 2
+
+    row = matches["breaks"][0]
+
+    row["selected_brand"] = None
+    row["eligible_brand_ids"] = []
+    row["ranked_eligible_brands"] = []
+
+    row["context"]["hard_safety_contexts"] = [
+        "death"
+    ]
+
+    row["blocked_brands"] = [
+        {
+            "brand_id": "brand_a",
+            "hard_block": True,
+            "negative_context_hits": [
+                "death"
+            ],
+        },
+        {
+            "brand_id": "brand_b",
+            "hard_block": True,
+            "negative_context_hits": [
+                "death"
+            ],
+        },
+    ]
+
+    manifest = build_debug_manifest(
+        optimized=optimized,
+        brand_matches=matches,
+    )
+
+    summary = manifest["summary"]
+
+    assert summary["break_count"] == 1
+    assert summary["delivered_ad_count"] == 0
+    assert summary["no_fill_break_count"] == 1
+    assert summary["all_breaks_resolved"] is True
+    assert summary["all_breaks_have_brand"] is False
+
+    item = (
+        manifest["videos"][0]["breaks"][0]
+    )
+
+    assert (
+        item["delivery_status"]
+        == "no_fill_brand_safety"
+    )
+
+    assert item["selected_brand"] is None
+
+    tree = build_vmap(
+        video_name="demo.mp4",
+        breaks=[item],
+        ad_duration_seconds=30,
+    )
+
+    ad_breaks = tree.getroot().findall(
+        f"{{{VMAP_NS}}}AdBreak"
+    )
+
+    assert ad_breaks == []
+
+
+def test_no_fill_rejects_ranking_failure():
+    optimized = sample_optimized()
+    matches = sample_matches()
+
+    matches["summary"]["brand_count"] = 2
+
+    row = matches["breaks"][0]
+
+    row["selected_brand"] = None
+    row["eligible_brand_ids"] = [
+        "brand_a",
+        "brand_b",
+    ]
+    row["ranked_eligible_brands"] = []
+    row["blocked_brands"] = []
+
+    try:
+        build_debug_manifest(
+            optimized=optimized,
+            brand_matches=matches,
+        )
+    except ValueError:
+        pass
+    else:
+        raise AssertionError(
+            "Ranking failure was incorrectly "
+            "accepted as a safety no-fill"
+        )
+
+
+def test_vmap_rejects_ambiguous_missing_brand():
+    item = {
+        "break_id": "demo-break-01",
+        "timestamp_seconds": 120.0,
+        "delivery_status": "filled",
+        "selected_brand": None,
+    }
+
+    try:
+        build_vmap(
+            video_name="demo.mp4",
+            breaks=[item],
+            ad_duration_seconds=30,
+        )
+    except ValueError:
+        pass
+    else:
+        raise AssertionError(
+            "Filled VMAP break without "
+            "a brand should fail"
+        )

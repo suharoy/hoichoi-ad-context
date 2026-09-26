@@ -1112,63 +1112,6 @@ def match_brands_frozen(
 
 
 
-def build_delivery_subset(
-    optimized: dict,
-    brand_matches: dict,
-) -> tuple[dict, dict]:
-    """
-    Return VMAP/debug-manifest inputs containing only safely fillable ads.
-
-    The original optimized schedule and held-out brand-match report remain
-    unchanged so no-fill decisions stay visible in evaluation evidence.
-    """
-    scheduled = optimized["videos"][0]["selected_breaks"]
-    matches = brand_matches["breaks"]
-
-    if len(scheduled) != len(matches):
-        raise ValueError(
-            "Scheduled-break / brand-match count mismatch"
-        )
-
-    delivered_breaks = []
-    delivered_matches = []
-
-    for break_item, match in zip(
-        scheduled,
-        matches,
-        strict=True,
-    ):
-        if match.get("selected_brand") is None:
-            continue
-
-        delivered_breaks.append(break_item)
-        delivered_matches.append(match)
-
-    delivery_video = {
-        **optimized["videos"][0],
-        "selected_breaks": delivered_breaks,
-        "selected_break_count": len(delivered_breaks),
-    }
-
-    delivery_optimized = {
-        **optimized,
-        "videos": [delivery_video],
-        "summary": {
-            **optimized.get("summary", {}),
-            "selected_breaks_total": len(delivered_breaks),
-        },
-    }
-
-    delivery_matches = {
-        **brand_matches,
-        "breaks": delivered_matches,
-        "summary": {
-            **brand_matches["summary"],
-            "break_count": len(delivered_matches),
-        },
-    }
-
-    return delivery_optimized, delivery_matches
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -1313,16 +1256,11 @@ def main() -> None:
         brand_matches,
     )
 
-    delivery_optimized, delivery_brand_matches = (
-        build_delivery_subset(
-            optimized,
-            brand_matches,
-        )
-    )
-
+    # The generic manifest layer resolves both filled
+    # and hard-safety no-fill opportunities.
     debug_manifest = build_debug_manifest(
-        optimized=delivery_optimized,
-        brand_matches=delivery_brand_matches,
+        optimized=optimized,
+        brand_matches=brand_matches,
     )
 
     manifests = output / "manifests"

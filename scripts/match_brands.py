@@ -401,6 +401,8 @@ def main() -> None:
 
     blocked_brand_decisions = 0
     negative_context_violations = 0
+    delivered_ad_count = 0
+    no_fill_break_count = 0
 
     for optimized_video in (
         optimized["videos"]
@@ -595,10 +597,42 @@ def main() -> None:
                 else None
             )
 
-            if (
-                selected_brand
-                is not None
-            ):
+            if selected_brand is None:
+                # A no-fill is legitimate ONLY when every catalogue
+                # brand was removed by the hard safety filter.
+                #
+                # If safe brands exist but ranking returned nothing,
+                # that is an implementation failure, not a no-fill.
+                if eligible:
+                    raise RuntimeError(
+                        "Brand ranking returned no result "
+                        f"despite {len(eligible)} safety-eligible "
+                        f"brands for {video_name} at {timestamp}"
+                    )
+
+                blocked_ids = {
+                    item["brand_id"]
+                    for item in blocked
+                }
+
+                if len(blocked_ids) != len(catalogue.brands):
+                    raise RuntimeError(
+                        "No-fill requested without every catalogue "
+                        f"brand being hard-blocked for "
+                        f"{video_name} at {timestamp}"
+                    )
+
+                no_fill_break_count += 1
+                delivery_status = "no_fill_brand_safety"
+                delivery_reason = (
+                    "all_catalogue_brands_hard_blocked"
+                )
+
+            else:
+                delivered_ad_count += 1
+                delivery_status = "filled"
+                delivery_reason = None
+
                 selected_brand_counts[
                     selected_brand[
                         "brand_id"
@@ -672,6 +706,12 @@ def main() -> None:
                     "selected_brand": (
                         selected_brand
                     ),
+                    "delivery_status": (
+                        delivery_status
+                    ),
+                    "delivery_reason": (
+                        delivery_reason
+                    ),
                 }
             )
 
@@ -703,6 +743,17 @@ def main() -> None:
                 len(
                     catalogue.brands
                 )
+            ),
+            "delivered_ad_count": (
+                delivered_ad_count
+            ),
+            "no_fill_break_count": (
+                no_fill_break_count
+            ),
+            "all_breaks_resolved": (
+                delivered_ad_count
+                + no_fill_break_count
+                == len(results)
             ),
             "blocked_brand_decisions": (
                 blocked_brand_decisions

@@ -33,7 +33,12 @@ def load_manifest(path:Path)->dict:
     s=payload.get('summary') or {}
     if s.get('negative_context_violations',0)!=0:
         raise ValueError('Manifest contains negative-context violations')
-    if not s.get('all_breaks_have_brand',False):
+    # Schema 1.1 supports deliberate hard-safety no-fill breaks.
+    # Older manifests remain accepted when every break has a brand.
+    if 'all_breaks_resolved' in s:
+        if not s.get('all_breaks_resolved', False):
+            raise ValueError('Manifest contains unresolved breaks')
+    elif not s.get('all_breaks_have_brand', False):
         raise ValueError('Manifest contains unmatched breaks')
     return payload
 
@@ -53,7 +58,27 @@ app.mount('/static',StaticFiles(directory=str(FRONTEND)),name='static')
 def health():
     try: m=runtime_manifest()
     except Exception as e: return {'status':'degraded','detail':str(e)}
-    return {'status':'ok','video_count':len(m['videos']),'available_video_count':sum(1 for v in m['videos'] if v['media_available']),'break_count':m['summary']['break_count'],'negative_context_violations':m['summary']['negative_context_violations']}
+    s=m['summary']
+    return {
+        'status':'ok',
+        'video_count':len(m['videos']),
+        'available_video_count':sum(
+            1 for v in m['videos']
+            if v['media_available']
+        ),
+        'break_count':s['break_count'],
+        'delivered_ad_count':s.get(
+            'delivered_ad_count',
+            s.get('matched_break_count',s['break_count'])
+        ),
+        'no_fill_break_count':s.get(
+            'no_fill_break_count',
+            0
+        ),
+        'negative_context_violations':s[
+            'negative_context_violations'
+        ],
+    }
 
 @app.get('/api/manifest')
 def manifest():

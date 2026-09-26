@@ -193,11 +193,36 @@ def build_vmap(
             )
         )
 
+        delivery_status = item.get(
+            "delivery_status",
+            "filled",
+        )
+
+        if (
+            delivery_status
+            == "no_fill_brand_safety"
+        ):
+            if selected_brand is not None:
+                raise ValueError(
+                    f"{video_name}: no-fill break "
+                    "cannot contain a selected brand"
+                )
+
+            # Audit manifest keeps this opportunity,
+            # but VMAP must not interrupt content
+            # when there is no safe advertiser.
+            continue
+
+        if delivery_status != "filled":
+            raise ValueError(
+                f"{video_name}: unknown delivery "
+                f"status {delivery_status!r}"
+            )
+
         if selected_brand is None:
             raise ValueError(
-                f"{video_name}: "
-                "cannot create VMAP "
-                "without selected brand"
+                f"{video_name}: filled break "
+                "requires selected brand"
             )
 
         break_id = str(

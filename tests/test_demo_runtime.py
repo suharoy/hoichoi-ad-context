@@ -15,3 +15,55 @@ def test_rejects_unsafe_manifest(tmp_path):
 
 def test_accepts_safe_manifest(tmp_path):
     f=tmp_path/'m.json'; f.write_text(json.dumps(good())); assert load_manifest(f)['summary']['all_breaks_have_brand'] is True
+
+
+
+def test_accepts_resolved_no_fill_manifest(tmp_path):
+    payload = {
+        "videos": [],
+        "summary": {
+            "break_count": 1,
+            "delivered_ad_count": 0,
+            "no_fill_break_count": 1,
+            "all_breaks_resolved": True,
+            "all_breaks_have_brand": False,
+            "negative_context_violations": 0,
+        },
+    }
+
+    path = tmp_path / "resolved.json"
+
+    path.write_text(
+        json.dumps(payload),
+        encoding="utf-8",
+    )
+
+    loaded = load_manifest(path)
+
+    assert (
+        loaded["summary"][
+            "no_fill_break_count"
+        ]
+        == 1
+    )
+
+
+def test_rejects_unresolved_manifest(tmp_path):
+    payload = {
+        "videos": [],
+        "summary": {
+            "break_count": 1,
+            "all_breaks_resolved": False,
+            "negative_context_violations": 0,
+        },
+    }
+
+    path = tmp_path / "unresolved.json"
+
+    path.write_text(
+        json.dumps(payload),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError):
+        load_manifest(path)

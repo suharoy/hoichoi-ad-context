@@ -48,3 +48,5 @@ frontend/dist/
 
 # Allow a documented environment template
 !.env.example
+
+*.egg-info/
