@@ -1,0 +1,207 @@
+{
+  "catalogue_name": "synthetic-demo-v1",
+  "catalogue_status": "hackathon_demo_synthetic_not_organizer_spec",
+  "brands": [
+    {
+      "brand_id": "zorali_foods",
+      "name": "Zorali Foods",
+      "description": "A synthetic food brand for everyday meals, home cooking, and shared dining.",
+      "positive_contexts": [
+        "food",
+        "cooking",
+        "dining",
+        "family",
+        "celebration"
+      ],
+      "negative_contexts": [
+        "violence",
+        "weapon",
+        "injury",
+        "medical_emergency",
+        "death",
+        "grief",
+        "crime",
+        "fear_threat"
+      ],
+      "activities": [
+        "cooking",
+        "dining"
+      ],
+      "creative_uri": "/creatives/zorali_foods.mp4"
+    },
+    {
+      "brand_id": "nimora_home",
+      "name": "Nimora Home",
+      "description": "A synthetic home and living brand for comfortable households, family time, and interiors.",
+      "positive_contexts": [
+        "family",
+        "indoor",
+        "conversation",
+        "cooking"
+      ],
+      "negative_contexts": [
+        "violence",
+        "weapon",
+        "injury",
+        "death",
+        "grief",
+        "crime",
+        "fear_threat"
+      ],
+      "activities": [
+        "conversation",
+        "cooking"
+      ],
+      "creative_uri": "/creatives/nimora_home.mp4"
+    },
+    {
+      "brand_id": "velune_mobility",
+      "name": "Velune Mobility",
+      "description": "A synthetic mobility brand for journeys, driving, city movement, and technology-enabled travel.",
+      "positive_contexts": [
+        "travel",
+        "driving",
+        "outdoor",
+        "technology"
+      ],
+      "negative_contexts": [
+        "injury",
+        "medical_emergency",
+        "death",
+        "crime",
+        "fear_threat"
+      ],
+      "activities": [
+        "travel",
+        "driving"
+      ],
+      "creative_uri": "/creatives/velune_mobility.mp4"
+    },
+    {
+      "brand_id": "arovia_learning",
+      "name": "Arovia Learning",
+      "description": "A synthetic learning platform for education, study, skills, and digital learning.",
+      "positive_contexts": [
+        "education",
+        "technology",
+        "work",
+        "family"
+      ],
+      "negative_contexts": [
+        "violence",
+        "weapon",
+        "injury",
+        "death",
+        "grief",
+        "crime",
+        "fear_threat"
+      ],
+      "activities": [
+        "education",
+        "technology"
+      ],
+      "creative_uri": "/creatives/arovia_learning.mp4"
+    },
+    {
+      "brand_id": "kiven_finance",
+      "name": "Kiven Finance",
+      "description": "A synthetic personal-finance service for payments, planning, work, and everyday money decisions.",
+      "positive_contexts": [
+        "finance",
+        "work",
+        "shopping",
+        "family",
+        "technology"
+      ],
+      "negative_contexts": [
+        "crime",
+        "violence",
+        "weapon",
+        "death",
+        "grief",
+        "fear_threat"
+      ],
+      "activities": [
+        "finance",
+        "shopping"
+      ],
+      "creative_uri": "/creatives/kiven_finance.mp4"
+    },
+    {
+      "brand_id": "solara_wellness",
+      "name": "Solara Wellness",
+      "description": "A synthetic wellness brand for healthy routines, family wellbeing, and positive daily activity.",
+      "positive_contexts": [
+        "family",
+        "outdoor",
+        "conversation"
+      ],
+      "negative_contexts": [
+        "violence",
+        "weapon",
+        "injury",
+        "medical_emergency",
+        "death",
+        "grief",
+        "fear_threat"
+      ],
+      "activities": [
+        "outdoor",
+        "conversation"
+      ],
+      "creative_uri": "/creatives/solara_wellness.mp4"
+    },
+    {
+      "brand_id": "tavira_travel",
+      "name": "Tavira Travel",
+      "description": "A synthetic travel brand for trips, outdoor experiences, celebrations, and time with friends.",
+      "positive_contexts": [
+        "travel",
+        "outdoor",
+        "celebration",
+        "friendship"
+      ],
+      "negative_contexts": [
+        "violence",
+        "weapon",
+        "injury",
+        "medical_emergency",
+        "death",
+        "grief",
+        "crime",
+        "fear_threat"
+      ],
+      "activities": [
+        "travel",
+        "outdoor"
+      ],
+      "creative_uri": "/creatives/tavira_travel.mp4"
+    },
+    {
+      "brand_id": "orivox_tech",
+      "name": "Orivox Tech",
+      "description": "A synthetic consumer-technology brand for work, learning, communication, and digital life.",
+      "positive_contexts": [
+        "technology",
+        "work",
+        "education",
+        "friendship",
+        "conversation"
+      ],
+      "negative_contexts": [
+        "violence",
+        "weapon",
+        "death",
+        "grief",
+        "crime",
+        "fear_threat"
+      ],
+      "activities": [
+        "technology",
+        "work",
+        "education"
+      ],
+      "creative_uri": "/creatives/orivox_tech.mp4"
+    }
+  ]
+}

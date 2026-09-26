@@ -1,0 +1,339 @@
+{
+  "version": 1,
+  "context_top_k": 4,
+  "method": "multimodal_rank_fusion",
+  "contexts": [
+    {
+      "context_id": "food",
+      "text_description": "food, meals, eating, খাবার, খাওয়া, ভোজন",
+      "visual_prompt": "a scene involving food or a meal",
+      "keywords": [
+        "খাবার",
+        "খাওয়া",
+        "ভোজন",
+        "meal",
+        "food"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "cooking",
+      "text_description": "cooking, kitchen, preparing food, রান্না, রাঁধা",
+      "visual_prompt": "people cooking or preparing food in a kitchen",
+      "keywords": [
+        "রান্না",
+        "রাঁধ",
+        "cook",
+        "kitchen"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "dining",
+      "text_description": "dining, restaurant, shared meal, খেতে বসা, খাবার টেবিল",
+      "visual_prompt": "people dining or sharing a meal",
+      "keywords": [
+        "restaurant",
+        "dining",
+        "খেতে",
+        "খাবার টেবিল"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "family",
+      "text_description": "family, parents, children, household, পরিবার, মা, বাবা",
+      "visual_prompt": "a family or household scene",
+      "keywords": [
+        "পরিবার",
+        "মা",
+        "বাবা",
+        "family"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "celebration",
+      "text_description": "celebration, festival, party, আনন্দ, উৎসব, বিয়ে",
+      "visual_prompt": "a celebration, festival, party, or joyful gathering",
+      "keywords": [
+        "উৎসব",
+        "বিয়ে",
+        "আনন্দ",
+        "party",
+        "celebration"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "friendship",
+      "text_description": "friends, friendship, companionship, বন্ধু, বন্ধুত্ব",
+      "visual_prompt": "friends spending time together",
+      "keywords": [
+        "বন্ধু",
+        "friend"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "romance",
+      "text_description": "romance, couple, love, relationship, প্রেম, ভালোবাসা",
+      "visual_prompt": "a romantic or couple scene",
+      "keywords": [
+        "প্রেম",
+        "ভালোবাসা",
+        "love",
+        "romance"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "conversation",
+      "text_description": "conversation, discussion, talking, কথা বলা, আলোচনা",
+      "visual_prompt": "people talking or having a conversation",
+      "keywords": [
+        "কথা",
+        "আলোচনা",
+        "বলছি",
+        "conversation"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "work",
+      "text_description": "work, office, professional meeting, কাজ, অফিস, মিটিং",
+      "visual_prompt": "an office, workplace, or professional meeting",
+      "keywords": [
+        "অফিস",
+        "মিটিং",
+        "কাজ",
+        "office"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "finance",
+      "text_description": "money, finance, payment, bank, টাকা, ঋণ, পেমেন্ট",
+      "visual_prompt": "a financial, money, payment, or banking context",
+      "keywords": [
+        "টাকা",
+        "ঋণ",
+        "ব্যাংক",
+        "payment",
+        "money"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "shopping",
+      "text_description": "shopping, buying, retail, market, কেনাকাটা, বাজার",
+      "visual_prompt": "shopping, retail, a store, or a market",
+      "keywords": [
+        "কেনা",
+        "কেনাকাটা",
+        "বাজার",
+        "shopping"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "education",
+      "text_description": "education, learning, school, study, পড়াশোনা, স্কুল, কলেজ",
+      "visual_prompt": "a school, classroom, studying, or learning scene",
+      "keywords": [
+        "পড়া",
+        "স্কুল",
+        "কলেজ",
+        "study",
+        "school"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "technology",
+      "text_description": "technology, computer, phone, digital device, কম্পিউটার, ফোন",
+      "visual_prompt": "technology, computers, phones, or digital devices",
+      "keywords": [
+        "কম্পিউটার",
+        "ফোন",
+        "মোবাইল",
+        "computer",
+        "phone"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "travel",
+      "text_description": "travel, journey, trip, tourism, ভ্রমণ, যাত্রা",
+      "visual_prompt": "travel, tourism, or a journey",
+      "keywords": [
+        "ভ্রমণ",
+        "যাত্রা",
+        "trip",
+        "travel"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "driving",
+      "text_description": "driving, car, road, vehicle, গাড়ি, রাস্তা, ড্রাইভিং",
+      "visual_prompt": "driving, a car, vehicle, or road scene",
+      "keywords": [
+        "গাড়ি",
+        "রাস্তা",
+        "car",
+        "driving"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "indoor",
+      "text_description": "indoors, room, house interior, ঘর, বাড়ির ভিতর",
+      "visual_prompt": "an indoor room or interior scene",
+      "keywords": [
+        "ঘর",
+        "ভিতর",
+        "room",
+        "indoor"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "outdoor",
+      "text_description": "outdoors, street, nature, outside, বাইরে, রাস্তা",
+      "visual_prompt": "an outdoor, street, or nature scene",
+      "keywords": [
+        "বাইরে",
+        "রাস্তা",
+        "outdoor",
+        "street"
+      ],
+      "safety_sensitive": false
+    },
+    {
+      "context_id": "violence",
+      "text_description": "violence, assault, fighting, attack, মারামারি, হামলা, আক্রমণ",
+      "visual_prompt": "violence, fighting, assault, or an attack",
+      "keywords": [
+        "মারামারি",
+        "হামলা",
+        "আক্রমণ",
+        "মারধর",
+        "violence",
+        "attack"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "weapon",
+      "text_description": "weapon, gun, knife, firearm, বন্দুক, ছুরি, অস্ত্র",
+      "visual_prompt": "a weapon, gun, knife, or firearm",
+      "keywords": [
+        "বন্দুক",
+        "ছুরি",
+        "অস্ত্র",
+        "gun",
+        "knife",
+        "weapon"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "injury",
+      "text_description": "injury, bleeding, wounded, hurt, আহত, রক্ত, চোট",
+      "visual_prompt": "an injured, wounded, or bleeding person",
+      "keywords": [
+        "আহত",
+        "রক্ত",
+        "চোট",
+        "injury",
+        "wounded"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "medical_emergency",
+      "text_description": "medical emergency, hospital crisis, ambulance, জরুরি চিকিৎসা, হাসপাতাল, অ্যাম্বুলেন্স",
+      "visual_prompt": "a medical emergency, hospital crisis, or ambulance scene",
+      "keywords": [
+        "হাসপাতাল",
+        "অ্যাম্বুলেন্স",
+        "জরুরি",
+        "hospital",
+        "ambulance"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "death",
+      "text_description": "death, dead body, killing, murder, মৃত্যু, মৃত, খুন, হত্যা",
+      "visual_prompt": "death, a dead body, murder, or killing",
+      "keywords": [
+        "মৃত্যু",
+        "মৃত",
+        "খুন",
+        "হত্যা",
+        "dead",
+        "murder",
+        "death"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "grief",
+      "text_description": "grief, mourning, funeral, crying, শোক, কান্না, অন্ত্যেষ্টি",
+      "visual_prompt": "grief, mourning, a funeral, or intense sadness",
+      "keywords": [
+        "শোক",
+        "কান্না",
+        "funeral",
+        "grief",
+        "mourning"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "crime",
+      "text_description": "crime, criminal activity, robbery, theft, অপরাধ, ডাকাতি, চুরি",
+      "visual_prompt": "crime, robbery, theft, or criminal activity",
+      "keywords": [
+        "অপরাধ",
+        "ডাকাতি",
+        "চুরি",
+        "crime",
+        "robbery",
+        "theft"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "police",
+      "text_description": "police, station, arrest, investigation, পুলিশ, থানা, গ্রেফতার, তদন্ত",
+      "visual_prompt": "police, an arrest, investigation, or police station",
+      "keywords": [
+        "পুলিশ",
+        "থানা",
+        "গ্রেফতার",
+        "তদন্ত",
+        "police",
+        "arrest"
+      ],
+      "safety_sensitive": true
+    },
+    {
+      "context_id": "fear_threat",
+      "text_description": "fear, threat, danger, intimidation, ভয়, হুমকি, বিপদ",
+      "visual_prompt": "fear, threat, danger, or intimidation",
+      "keywords": [
+        "ভয়",
+        "হুমকি",
+        "বিপদ",
+        "threat",
+        "danger",
+        "fear"
+      ],
+      "safety_sensitive": true
+    }
+  ],
+  "safety_consensus_percentile": 0.9
+}
