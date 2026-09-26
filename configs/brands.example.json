@@ -1,0 +1,12 @@
+{
+  "brands": [
+    {
+      "brand_id": "example_brand",
+      "description": "Replace with the synthetic catalogue supplied/defined for the challenge.",
+      "positive_contexts": [],
+      "negative_contexts": [],
+      "activities": [],
+      "creative_uri": ""
+    }
+  ]
+}

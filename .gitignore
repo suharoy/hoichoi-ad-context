@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+
+# IDE / OS
+.vscode/settings.json
+.DS_Store
+Thumbs.db
+
+# Supplied / generated media
+assets/
+hoichoi-assets/
+*.mp4
+*.mkv
+*.mov
+*.wav
+*.mp3
+frames/
+
+# Generated outputs (keep directory placeholder)
+outputs/*
+!outputs/.gitkeep
+
+# Models / caches
+.cache/
+models/
+*.pt
+*.pth
+*.onnx
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/dist/
+
+# Additional model artifacts
+*.safetensors
+*.ckpt
+*.bin
+
+# Local tooling
+.idea/
+
+# Allow a documented environment template
+!.env.example
