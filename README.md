@@ -1008,3 +1008,7 @@ reproducible engineering
 ```
 
 The project is intentionally aligned with a data-science / ML-engineering approach: measure noisy evidence, calibrate it, formulate decisions under constraints, validate against baselines, and preserve auditability from model output to final delivery.
+
+## License
+
+Original source code in this repository is released under the [MIT License](LICENSE.md). Third-party models, libraries, and copyrighted media remain subject to their respective licenses and terms.
