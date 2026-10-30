@@ -985,7 +985,12 @@ https://suharoy.github.io/hoichoi-ad-context/
 https://github.com/suharoy/hoichoi-ad-context
 
 
+## At a glance
 
+- Multimodal video understanding using CLIP, Bengali ASR, WebRTC VAD and multilingual semantic embeddings.
+- Evidence-aware ad-break scoring followed by MILP-based global scheduling under explicit pacing constraints.
+- Context-aware advertiser ranking with deterministic hard-safety exclusions and fail-closed NO-FILL behavior.
+- Development evaluation reduced VAD-detected speech interruptions to **0/14**, compared with **15/17** for periodic placement and **13/14** for a visual-only baseline.
 ---
 
 # Author
